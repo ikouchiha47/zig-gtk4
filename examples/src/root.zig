@@ -15,5 +15,5 @@ pub fn show(rows: u32, cols: u32) !void {
     std.debug.print("rows: {d}, cols: {d}", .{ rows, cols });
     const app = Gtk.GtkApplication.new("com.zmenu.gtkapp", 0) orelse return ApplicationError.InitFailed;
 
-    app.addWindow(&c.GtkWindow{});
+    on_activate(app);
 }

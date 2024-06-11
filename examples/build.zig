@@ -28,6 +28,9 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
+
+    lib.addLibraryPath(b.path("/usr/include"));
+    lib.linkSystemLibrary("gtk-4.0");
     lib.root_module.addImport("gtk4", gtk_module.module("gtk4"));
 
     // This declares intent for the library to be installed into the standard
@@ -42,6 +45,9 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
     exe.linkLibC();
+    exe.addLibraryPath(b.path("/usr/include"));
+    exe.linkSystemLibrary("gtk-4.0");
+
     exe.root_module.addImport("gtk4", gtk_module.module("gtk4"));
 
     // This declares intent for the executable to be installed into the

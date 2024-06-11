@@ -98,6 +98,6 @@ pub fn build(b: *std.Build) void {
         lib_unit_tests,
     }) |step| {
         step.linkLibC();
-        step.linkSystemLibrary("gtk4");
+        step.linkSystemLibrary("gtk-4.0");
     }
 }
