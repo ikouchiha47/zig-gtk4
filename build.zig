@@ -40,7 +40,11 @@ pub fn build(b: *std.Build) void {
     // standard location when the user invokes the "install" step (the default
     // step when running `zig build`).
     b.installArtifact(exe);
-    _ = b.addModule("gtk4", .{ .root_source_file = b.path("src/gtk4.zig") });
+
+    const gtk_module = b.addModule("gtk4", .{
+        .root_source_file = b.path("src/gtk4.zig"),
+    });
+    _ = gtk_module;
 
     // This *creates* a Run step in the build graph, to be executed when another
     // step is evaluated that depends on it. The next line below will establish

@@ -124,3 +124,20 @@ pub const GtkApplication = extern struct {
         c.gtk_application_uninhibit(self.toGTK(), cookie);
     }
 };
+
+pub const GtkApplicationWindow = extern struct {
+    const Self = @This();
+    pub const GTK = c.GtkApplicationWindow;
+    parent_instance: c.GtkWindow,
+    priv: ?*c.GtkApplicationWindowPrivate,
+    usingnamespace Cast(Self);
+
+    pub extern fn gtk_application_window_new(application: ?*c.GtkApplication) ?*c.GtkWidget;
+    pub extern fn gtk_application_window_get_type() c.GType;
+    pub extern fn gtk_application_window_set_show_menubar(self: anytype, show_menubar: c.gboolean) void;
+    pub extern fn gtk_application_window_get_show_menubar(self: anytype) c.gboolean;
+};
+
+pub fn gtk_application_window_new(application: ?*c.GtkApplication) ?*c.GtkWidget {
+    return c.gtk_application_window_new(application);
+}
